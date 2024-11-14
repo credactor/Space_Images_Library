@@ -12,10 +12,10 @@ const { db } = require("./config/db.js");
 app.use(express.json());
 app.use(cookieParser());
 app.use(compression());
-app.use(cors({
-  credentials:true,
-  origin:["https://space-images-library.onrender.com"]
-}));
+// app.use(cors({
+//   credentials:true,
+//   origin:["https://space-images-library.onrender.com"]
+// }));
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', "https://space-images-library.onrender.com");
   // res.setHeader('Access-Control-Allow-Origin', "http://localhost:5173");
@@ -28,21 +28,11 @@ app.use((req, res, next) => {
 
 const { PORT } = process.env;
 
-app.listen(PORT || 5000, () => {
-  console.log(`run on ${PORT || 5000}`);
+app.listen(PORT || 10000, () => {
+  console.log(`run on ${PORT || 10000}`);
 });
 
 app.use("/", userRouter);
-
-// Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, "./client/dist")));
-app.use(express.static(path.join(__dirname, "./client/dist")));
-
-// All other GET requests not handled before will return our React app
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
-  // res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-});
 
 async function getCategories() {
   try {
@@ -104,3 +94,12 @@ getImageBase().then(function(result) {
     res.json(result);
   });
 });
+
+// Have Node serve the files for our built React app
+// app.use(express.static(path.resolve(__dirname, "./client/dist")));
+// app.use(express.static(path.join(__dirname, "./client/dist")));
+
+// All other GET requests not handled before will return our React app
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
+// });
