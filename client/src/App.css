@@ -1,0 +1,97 @@
+body {
+  background-color: black;
+  background-image: url("/back.webp");
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px;
+  align-items: center;
+}
+
+.image-card img {
+  width: 94%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.image-card img:hover {
+  transform: scale(1.03);
+}
+
+.attributes {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.image-card {
+  background-color: rgb(96, 146, 202);
+  border-radius: 8px;
+}
+
+.full {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8%;
+  background: #CCC center no-repeat;
+  background: rgba(0, 0, 0, 0.5) center no-repeat;
+  background-size: contain;
+  background-origin: content-box;
+}
+
+.full:target {
+  display: block;
+}
+
+.star {
+  font-size: larger;
+  transition: color 0.5s;
+}
+
+.star:hover {
+  color:brown;
+}
+
+#email, #password {
+  margin: -2px;
+  margin-top: -8px;
+  background-color: cornsilk;
+}
+
+h1 {
+  color: rgb(103, 209, 130);
+}
+
+h2 {
+  color: #CCC;
+}
+.navs {
+  color: cornflowerblue;
+}
+
+.title {
+  margin: 6px;
+}
+
+.sorting {
+  font-size: large;
+  color:pink;
+}
+
+.cats {
+  margin: 4px;
+}
