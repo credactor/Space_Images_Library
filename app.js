@@ -1,9 +1,10 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+require("dotenv").config();
 const compression = require("compression");
 const path = require("path");
-const knex = require("knex");
+// const knex = require("knex");
 const userRouter = require("./routes/userRouter.js");
 
 const app = express();
@@ -12,23 +13,23 @@ const { db } = require("./config/db.js");
 app.use(express.json());
 app.use(cookieParser());
 app.use(compression());
-app.use(cors({
-  credentials:true,
-  origin:["https://space-images-library.onrender.com"]
-}));
+app.use(cors());//{
+//   credentials:true,
+//   origin:["https://space-images-library.onrender.com"]
+// }));
 
-const { HOST } = process.env;
+// const { HOST } = process.env;
 
-app.use((req, res, next) => {
-  // res.setHeader('Access-Control-Allow-Origin', "https://space-images-library.onrender.com");
-  res.setHeader('Access-Control-Allow-Origin', HOST);
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Content-Type', 'application/json');
-  // res.setHeader('Content-Type', 'text/html');
-  next();
-});
+// app.use((req, res, next) => {
+//   // res.setHeader('Access-Control-Allow-Origin', "https://space-images-library.onrender.com");
+//   res.setHeader('Access-Control-Allow-Origin', HOST);
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   res.setHeader('Access-Control-Allow-Credentials', true);
+//   res.setHeader('Content-Type', 'application/json');
+//   // res.setHeader('Content-Type', 'text/html');
+//   next();
+// });
 
 const { PORT } = process.env;
 
@@ -104,6 +105,6 @@ getImageBase().then(function(result) {
 // app.use(express.static(path.join(__dirname, "./client/dist")));
 
 // All other GET requests not handled before will return our React app
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
+// });
