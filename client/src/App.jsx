@@ -137,7 +137,7 @@ const SearchPage = () => {
       }
     };
 
-    const like = async (item_id, value) => { // async
+    const like = async (item_id) => { // async
       if (user_id > 0) {
         const current_item = imagebase.filter((item) => (item.id === item_id));
         // console.log("current_item:", current_item);
@@ -155,7 +155,7 @@ const SearchPage = () => {
         }
         try {
           setLoading(true);
-          const result = await likeImage(user_id, item_id, value, likes_list);
+          const result = await likeImage(user_id, item_id, likes_list);
           // console.log("like1:", result);
           if (result === true) {
             // console.log("AAA:", index, imagebase[index].users_likes, imageset[index].users_likes, images[index].users_likes,);
@@ -208,8 +208,8 @@ const SearchPage = () => {
             <a id={"foto"+item.id} href="#" className="full" style={{ backgroundImage: `url(${item.image_link})` }}></a>
             <p className="attributes">
               <span className="date_created">{item.date_created.slice(0, 10)}&emsp;&emsp;</span>              
-                {item.users_likes.includes(user_id) ? <span className="star" onClick={() => like(item.id, 1)}>&#9733;</span> : 
-                <span className="star" onClick={() => like(item.id, -1)}>&#9734;</span>}                
+                {item.users_likes.includes(user_id) ? <span className="star" onClick={() => like(item.id)}>&#9733;</span> : 
+                <span className="star" onClick={() => like(item.id)}>&#9734;</span>}                
               <span>&nbsp;{item.users_likes.length}</span>
             </p>
           </div>

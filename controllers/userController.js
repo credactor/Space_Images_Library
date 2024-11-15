@@ -25,9 +25,9 @@ module.exports = {
   },
 
   putLike: async (req, res) => {
-    const { user_id, item_id, value, likes_list} = req.body;
+    const { user_id, item_id, likes_list} = req.body;
     try {
-      const like = await userModel.useLike(user_id, item_id, value, likes_list);
+      const like = await userModel.useLike(user_id, item_id, likes_list);
       res.status(200).json({
         message: "[Un]like successfully",
         like,
