@@ -12,10 +12,10 @@ const { db } = require("./config/db.js");
 app.use(express.json());
 app.use(cookieParser());
 app.use(compression());
-// app.use(cors({
-//   credentials:true,
-//   origin:["https://space-images-library.onrender.com"]
-// }));
+app.use(cors({
+  credentials:true,
+  origin:["https://space-images-library.onrender.com"]
+}));
 
 const { HOST } = process.env;
 
