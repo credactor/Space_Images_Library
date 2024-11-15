@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 module.exports = {
   useLike: async (user_id, item_id, likes_list) => {
     const trx = await db.transaction();
-    console.log("trx:",user_id, item_id, likes_list);
+    // console.log("trx:",user_id, item_id, likes_list);
     try {
       const like = await db("images")
       .update({ users_likes: likes_list }, ['users_likes'])

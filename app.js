@@ -1,6 +1,6 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
-const cors = require("cors");
+// const cors = require("cors");
 require("dotenv").config();
 const compression = require("compression");
 const path = require("path");
@@ -13,23 +13,23 @@ const { db } = require("./config/db.js");
 app.use(express.json());
 app.use(cookieParser());
 app.use(compression());
-app.use(cors());//{
+// app.use(cors());//{
 //   credentials:true,
 //   origin:["https://space-images-library.onrender.com"]
 // }));
 
-// const { HOST } = process.env;
+const { HOST } = process.env;
 
-// app.use((req, res, next) => {
-//   // res.setHeader('Access-Control-Allow-Origin', "https://space-images-library.onrender.com");
-//   res.setHeader('Access-Control-Allow-Origin', HOST);
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//   res.setHeader('Access-Control-Allow-Credentials', true);
-//   res.setHeader('Content-Type', 'application/json');
-//   // res.setHeader('Content-Type', 'text/html');
-//   next();
-// });
+app.use((req, res, next) => {
+  // res.setHeader('Access-Control-Allow-Origin', "https://space-images-library.onrender.com");
+  res.setHeader('Access-Control-Allow-Origin', HOST);
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Content-Type', 'application/json');
+  // res.setHeader('Content-Type', 'text/html');
+  next();
+});
 
 const { PORT } = process.env;
 
